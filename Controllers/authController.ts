@@ -6,7 +6,12 @@ import jwt from "jsonwebtoken";
 export const logar = async(req:Request, res:Response)=>{
    const {email, senha} = req.body
    const user = await prisma.usuario.findFirst({
-    where:{email, senha}
+    where:{email, senha},
+    select:{
+        email:true,
+        nome:true,
+        id:true
+    }
    })
    if (user) {    
        res.json({
