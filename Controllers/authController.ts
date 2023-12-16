@@ -22,7 +22,7 @@ export const autenticar = async(req:Request, res:Response)=>{
     try {
        const heard = req.headers["x-access-token"] as string
        if (jwt.verify(heard,secretKey)) {
-        res.json("usuário autenticado")
+        res.json(jwt.decode(heard))
        }
     
    } catch (error) {
