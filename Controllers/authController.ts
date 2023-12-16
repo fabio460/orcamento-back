@@ -10,7 +10,12 @@ export const logar = async(req:Request, res:Response)=>{
     select:{
         email:true,
         nome:true,
-        id:true
+        id:true,
+        orcamento:{
+            include:{
+                produto:true
+            }
+        }
     }
    })
    if (user) {    
