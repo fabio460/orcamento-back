@@ -35,6 +35,7 @@ model Produto {
     marca String
     endeerecoDaLoja String
     idDoOrcamento String @db.ObjectId
+    selecionado Boolean?
     orcamento Orcamento @relation(fields: [idDoOrcamento], references: [id], onDelete:Cascade)
 }
 

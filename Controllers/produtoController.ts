@@ -33,7 +33,8 @@ export const listarPorId = async(req:Request, res:Response)=>{
            marca,
            nome,
            valor,
-           idDoOrcamento
+           idDoOrcamento,
+           selecionado:true
         }
      })
      res.json("produto criado com sucesso!")
@@ -44,7 +45,7 @@ export const listarPorId = async(req:Request, res:Response)=>{
 
  export const atualizar = async(req:Request, res:Response)=>{
     try {
-     const {id, endeerecoDaLoja, loja, marca, nome, valor}:produtoType = req.body   
+     const {id, endeerecoDaLoja, loja, marca, nome, valor, selecionado}:produtoType = req.body   
      const r = await prisma.produto.update({
         data:{
             endeerecoDaLoja,
@@ -52,6 +53,7 @@ export const listarPorId = async(req:Request, res:Response)=>{
             marca,
             nome,
             valor,
+            selecionado
         },
         where:{id}
      })
