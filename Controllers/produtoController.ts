@@ -45,7 +45,7 @@ export const listarPorId = async(req:Request, res:Response)=>{
 
  export const atualizar = async(req:Request, res:Response)=>{
     try {
-     const {id, endeerecoDaLoja, loja, marca, nome, valor, selecionado}:produtoType = req.body   
+     const {id, endeerecoDaLoja, loja, marca, nome, valor}:produtoType = req.body   
      const r = await prisma.produto.update({
         data:{
             endeerecoDaLoja,
@@ -53,7 +53,7 @@ export const listarPorId = async(req:Request, res:Response)=>{
             marca,
             nome,
             valor,
-            selecionado
+            selecionado:true
         },
         where:{id}
      })
@@ -62,6 +62,21 @@ export const listarPorId = async(req:Request, res:Response)=>{
      res.status(400).json("Falha ao atualizar produto!")
     }
  }
+
+ export const atualizarSelecionado = async(req:Request, res:Response)=>{
+   try {
+    const {id, selecionado}:produtoType = req.body   
+    const r = await prisma.produto.update({
+       data:{
+           selecionado
+       },
+       where:{id}
+    })
+    res.json("produto selecionado com sucesso!")
+   } catch (error) {
+    res.status(400).json("Falha ao selecionado produto!")
+   }
+}
 
  export const deletar = async(req:Request, res:Response)=>{
     try {
