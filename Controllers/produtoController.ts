@@ -63,7 +63,7 @@ export const listarPorId = async(req:Request, res:Response)=>{
     }
  }
 
- export const atualizarSelecionado = async(req:Request, res:Response)=>{
+export const atualizarSelecionado = async(req:Request, res:Response)=>{
    try {
     const {id, selecionado}:produtoType = req.body   
     const r = await prisma.produto.update({
