@@ -29,7 +29,7 @@ export const listarPorId = async(req:Request, res:Response)=>{
             id:true,
             email:true,
             nome:true,
-            
+            senha:true,
             orcamento:{
                include:{
                   produto:true
