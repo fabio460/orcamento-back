@@ -22,12 +22,14 @@ export const listar = async(req:Request, res:Response)=>{
 export const listarPorId = async(req:Request, res:Response)=>{
     const id = req.params.id
     try {
+      
      const r = await prisma.usuario.findUnique({
         where:{id},
         select:{
             id:true,
             email:true,
             nome:true,
+            
             orcamento:{
                include:{
                   produto:true
