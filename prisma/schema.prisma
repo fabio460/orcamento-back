@@ -44,6 +44,7 @@ model HistoricoDeDatasDoProduto {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     datas String
     idDoProduto String @db.ObjectId
-    produto Produto @relation(fields: [idDoProduto],references: [id], onDelete:Cascade, onUpdate:Cascade)      
+    produto Produto @relation(fields: [idDoProduto],references: [id], onDelete:Cascade, onUpdate:Cascade)
+    preco Float?      
 }
 

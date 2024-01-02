@@ -50,12 +50,12 @@ export const listarPorId = async(req:Request, res:Response)=>{
       where:{
          id
       },
-      select:{dataDoPreco:true}
      })
      await prisma.historicoDeDatasDoProduto.create({
       data:{
          datas:prod?.dataDoPreco.toString() as string,
-         idDoProduto:id
+         idDoProduto:id,
+         preco:prod?.valor
       }
      })
      const r = await prisma.produto.update({
