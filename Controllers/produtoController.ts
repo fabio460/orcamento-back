@@ -46,6 +46,18 @@ export const listarPorId = async(req:Request, res:Response)=>{
  export const atualizar = async(req:Request, res:Response)=>{
     try {
      const {id, endeerecoDaLoja, loja, marca, nome, valor}:produtoType = req.body   
+     const prod = await prisma.produto.findUnique({
+      where:{
+         id
+      },
+      select:{dataDoPreco:true}
+     })
+     await prisma.historicoDeDatasDoProduto.create({
+      data:{
+         datas:prod?.dataDoPreco.toString() as string,
+         idDoProduto:id
+      }
+     })
      const r = await prisma.produto.update({
         data:{
             endeerecoDaLoja,

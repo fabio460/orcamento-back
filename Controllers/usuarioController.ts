@@ -32,7 +32,9 @@ export const listarPorId = async(req:Request, res:Response)=>{
             senha:true,
             orcamento:{
                include:{
-                  produto:true
+                  produto:{
+                     include:{historicoDeDatasDosProdutos:true}
+                  }
                }
             },
             

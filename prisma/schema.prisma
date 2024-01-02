@@ -37,6 +37,13 @@ model Produto {
     idDoOrcamento String @db.ObjectId
     selecionado Boolean?
     orcamento Orcamento @relation(fields: [idDoOrcamento], references: [id], onDelete:Cascade)
+    historicoDeDatasDosProdutos HistoricoDeDatasDoProduto[]
 }
 
+model HistoricoDeDatasDoProduto {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    datas String
+    idDoProduto String @db.ObjectId
+    produto Produto @relation(fields: [idDoProduto],references: [id], onDelete:Cascade, onUpdate:Cascade)      
+}
 
